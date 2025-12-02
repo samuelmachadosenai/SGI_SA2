@@ -9,16 +9,6 @@ class funcionario(BaseModel):
     endereco: str
     telefone: str
 
-colab = [
-    {
-        'nome': 'Açucena Pereira',
-        'cpf': '123.456.789-09',
-        'endereco': 'Rua da Alegria',
-        'telefone': '(47) 99505-0565'
-    }
-]
-
-colab_list = []
 
 app = FastAPI()
 
@@ -32,29 +22,23 @@ app = FastAPI()
 
 @app.post("/funcionarios")
 def create(colab: funcionario):
-    try:
-        b.addfunc(colab.nome, colab.cpf, colab.endereco, colab.telefone)
-        colab_list.append(colab.model_dump())
-        return {"mensagem": "Funcionário adicionado"}
-    except Exception as e:
-        return {'erro': str(e)}
+    b.addfunc(colab.nome, colab.cpf, colab.endereco, colab.telefone)
+    return {"mensagem": "Funcionário adicionado"}
+
 
 
 
 @app.get("/funcionarios")
 def read():
-    colab_list = b.seefunc()
-    return colab_list
+    return b.seefunc()
+    
 
 @app.put("/funcionarios/{cpf}")
 def update(cpf: str, dados: funcionario):
-    n = dados.nome
-    e = dados.endereco
-    tel= dados.telefone
-    c = dados.cpf
 
-    b.chang(n, e, tel, c)
-
+    resultado = b.chang(dados.nome, dados.endereco, dados.telefone, cpf)
+    return resultado
+    
 
 
 

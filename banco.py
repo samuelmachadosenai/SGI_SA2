@@ -7,7 +7,7 @@ import mysql.connector
 #     database="mercadinho"
 # )
 
-texto = "Salvo com sucesso!"
+
 
 # if con.is_connected():
 #     print("Conectado!")
@@ -30,7 +30,7 @@ def addfunc(n, c, e, t):
     con.commit()
     cursor.close()
     con.close()
-    return texto
+    return "Salvo"
 
 def seefunc():
     con = mysql.connector.connect(
@@ -63,3 +63,5 @@ def chang(n, e, t, c):
         con.commit()
         cursor.close()
         con.close()
+
+        return "Mudanças salvas"

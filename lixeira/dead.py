@@ -19,14 +19,18 @@ def pagar():
 #             break  # if user pressed a key other than the given key the loop will break
 
 venda = []
+total = 0
+a = 0
 
 def scan():
-    a = 0
+   
 
     while True:
 
         vanish()
         print("Escaneie o produto:\n")
+
+     
 
         while True:
 
@@ -34,17 +38,32 @@ def scan():
             
                     nome, preco = r.prod()
 
+
                     
 
                     tupla = (nome, preco)
+                  
                     venda.append(tupla)
                     # preco = produto['preço']
 
+                    
+                    global total 
+                    total += preco
+
             
                     for i in venda:
+                        
+                        preco = i[1]
+
+                        global a 
                         a += 1
 
                         print(f"{a}. {i}")
+                        print(preco)
+                        print(total)
+                        # print(len(tupla))
+                        # print(indic)
+    
                 
                 # print("-"*20)
         
@@ -71,6 +90,7 @@ def menu():
 
             if opt == 1:
                 scan()
+                print("Finalizar compra")
                 break
         break
 

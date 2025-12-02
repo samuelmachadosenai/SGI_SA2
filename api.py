@@ -18,6 +18,7 @@ colab = [
     }
 ]
 
+colab_list = []
 
 app = FastAPI()
 
@@ -28,14 +29,22 @@ app = FastAPI()
 
 # json
 
-@app.get("/funcionarios")
-def listar_funcionarios():
-    return colab
 
 @app.post("/funcionarios")
-def ver_funcionario(colab: funcionario):
-    b.func(colab.nome, colab.cpf, colab.endereco, colab.telefone)
-    return {"mensagem": "Funcionário adicionado"}
+def create(colab: funcionario):
+    try:
+        b.addfunc(colab.nome, colab.cpf, colab.endereco, colab.telefone)
+        colab_list.append(colab.model_dump())
+        return {"mensagem": "Funcionário adicionado"}
+    except Exception as e:
+        return {'erro': str(e)}
+
+
+
+@app.get("/funcionarios")
+def read():
+    colab_list = b.seefunc()
+    return colab_list
 
 
 

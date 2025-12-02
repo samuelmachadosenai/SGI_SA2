@@ -14,7 +14,7 @@ import mysql.connector
 
 # cursor = con.cursor()
 
-
+def home
  
 
 def addfunc(n, c, e, t):

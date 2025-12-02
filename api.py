@@ -13,6 +13,10 @@ class funcionario(BaseModel):
 app = FastAPI()
 
 
+@app.get("/")
+def home():
+    return "hello world"
+
 # dados = main.us()
 
 # users = []
@@ -23,7 +27,7 @@ app = FastAPI()
 @app.post("/funcionarios")
 def create(colab: funcionario):
     b.addfunc(colab.nome, colab.cpf, colab.endereco, colab.telefone)
-    return {"mensagem": "Funcionário adicionado"}
+    return "Funcionário adicionado"
 
 
 

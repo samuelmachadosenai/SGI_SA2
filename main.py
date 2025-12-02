@@ -10,6 +10,14 @@ def vanish():
 def pagar():
     print("aaaaa")
 
+# while True:  # making a loop
+#     try:  # used try so that if user pressed other than the given key error will not be shown
+#         if k.is_pressed('a'):  # if key 'q' is pressed 
+#             return True
+#             break  # finishing the loop
+#     except:
+#         break  # if user pressed a key other than the given key the loop will break
+
 venda = []
 
 def scan():
@@ -20,8 +28,8 @@ def scan():
        
     
         while True:
-            if k.is_pressed("a") == True:
-                k.wait("a")
+            if k.is_pressed("a"):
+            
                 nome, preco = r.prod()
 
                 tupla = (nome, preco)

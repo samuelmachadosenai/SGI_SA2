@@ -10,59 +10,47 @@ def vanish():
 def pagar():
     print("aaaaa")
 
-def key(key):
-    while True:  # making a loop
-        try:  # used try so that if user pressed other than the given key error will not be shown
-            if k.is_pressed(key):  # if key 'q' is pressed 
-                return True
-        except:
-            break  # if user pressed a key other than the given key the loop will break
+# def key(key):
+#     while True:  # making a loop
+#         try:  # used try so that if user pressed other than the given key error will not be shown
+#             if k.is_pressed(key):  # if key 'q' is pressed 
+#                 return True
+#         except:
+#             break  # if user pressed a key other than the given key the loop will break
 
 venda = []
 
 def scan():
     a = 0
+
     while True:
 
+        vanish()
         print("Escaneie o produto:\n")
-       
-    
+
         while True:
 
-                k.wait("a")
+                if k.read_key() == 'a':
             
-                nome, preco = r.prod()
-
-                
-
-                tupla = (nome, preco)
-                venda.append(tupla)
-                # preco = produto['preço']
-
-
-                for i in venda:
-                    a += 1
-
-
+                    nome, preco = r.prod()
 
                     
-                    print(f"{a}. {i}")
 
+                    tupla = (nome, preco)
+                    venda.append(tupla)
+                    # preco = produto['preço']
 
-                print("\n1. Finalizar compra.")
-                if k.is_pressed("1") == True:
-                    break
+            
+                    for i in venda:
+                        a += 1
 
-   
+                        print(f"{a}. {i}")
+                
+                # print("-"*20)
         
 
 
-        print("\n\n1. Finalizar compra")
-        if k.read_key() == "1":
-            break
-
-        break
-                
+                    
 
 
 

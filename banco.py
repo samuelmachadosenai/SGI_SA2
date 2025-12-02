@@ -15,7 +15,7 @@ if con.is_connected():
 cursor = con.cursor()
 
 
-
+ 
 
 def func(n, c, e, t):
     comando = """INSERT INTO funcionario (Nome, CPF, Endereco, Telefone) VALUES (%s, %s, %s, %s)"""
@@ -23,6 +23,3 @@ def func(n, c, e, t):
     cursor.execute(comando, (n, c, e, t))
     con.commit()
     return texto
-
-
-con.close()

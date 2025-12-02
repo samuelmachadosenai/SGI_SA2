@@ -65,3 +65,19 @@ def chang(n, e, t, c):
         con.close()
 
         return "Mudanças salvas"
+
+def remov(cpf):
+    con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="geleiadoce",
+    database="mercadinho"
+    )
+    cursor = con.cursor()
+    comando = """DELETE FROM funcionario WHERE CPF=%s"""
+    cursor.execute(comando, (cpf,))
+    con.commit()
+    cursor.close()
+    con.close()
+
+    return "Mudanças salvas"

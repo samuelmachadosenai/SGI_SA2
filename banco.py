@@ -2,7 +2,7 @@ import mysql.connector
 
 con = mysql.connector.connect(
     host="localhost",
-    user="root",        # ou o usuário que você usa
+    user="root",   
     password="geleiadoce",
     database="mercadinho"
 )
@@ -22,4 +22,5 @@ def func(n, c, e, t):
 
     cursor.execute(comando, (n, c, e, t))
     con.commit()
+    con.close()
     return texto

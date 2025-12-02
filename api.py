@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-import main
+# import main
 import banco as b
 from pydantic import BaseModel
 

@@ -30,7 +30,7 @@ def addfunc(n, c, e, t):
     con.commit()
     cursor.close()
     con.close()
-    return "Salvo com sucesso!"
+    return texto
 
 def seefunc():
     con = mysql.connector.connect(
@@ -45,3 +45,21 @@ def seefunc():
     cursor.close()
     con.close()
     return resultados
+
+def chang(n, e, t, c):
+        con = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="geleiadoce",
+        database="mercadinho"
+        )
+        cursor = con.cursor()
+        comando = """
+        UPDATE funcionario
+        SET Nome=%s, Endereco=%s, Telefone=%s
+        WHERE CPF=%s
+        """
+        cursor.execute(comando, (n, e, t, c))
+        con.commit()
+        cursor.close()
+        con.close()

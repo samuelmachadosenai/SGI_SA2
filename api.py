@@ -46,6 +46,17 @@ def read():
     colab_list = b.seefunc()
     return colab_list
 
+@app.put("/funcionarios/{cpf}")
+def update(cpf: str, dados: funcionario):
+    n = dados.nome
+    e = dados.endereco
+    tel= dados.telefone
+    c = dados.cpf
+
+    b.chang(n, e, tel, c)
+
+
+
 
 
 # @app.post("/")

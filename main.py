@@ -1,16 +1,7 @@
 import os
 import keyboard as k
 import rand as r
-from pynput import keyboard
 
-# def on_press(key):
-#     try:
-#     if key.char == "c":
-#     # do something
-#     return False # Stop listener
-#     elif key.char == "v":
-#     # do something else
-#     return False # Stop listener
 
 
 def vanish():
@@ -30,6 +21,7 @@ def scan():
     
         while True:
             if k.is_pressed("a") == True:
+                k.wait("a")
                 nome, preco = r.prod()
 
                 tupla = (nome, preco)
@@ -41,7 +33,6 @@ def scan():
                     a += 1
 
                     print(f"{a}. {i}")
-
    
         
 

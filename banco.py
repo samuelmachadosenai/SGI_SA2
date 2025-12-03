@@ -7,11 +7,13 @@ import mysql.connector
 #     database="mercadinho"
 # )
 
+ps = "geleiadoce"
+
 def login(a, s):
     con = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="geleiadoce",
+    password=ps,
     database="mercadinho"
     )
     cursor = con.cursor()
@@ -37,7 +39,7 @@ def addfunc(n, c, e, t):
     con = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="geleiadoce",
+    password=ps,
     database="mercadinho"
     )
     cursor = con.cursor()
@@ -52,7 +54,7 @@ def seefunc():
     con = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="geleiadoce",
+        password=ps,
         database="mercadinho"
     )
     cursor = con.cursor(dictionary=True)
@@ -66,7 +68,7 @@ def chang(n, e, t, c):
         con = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="geleiadoce",
+        password=ps,
         database="mercadinho"
         )
         cursor = con.cursor()
@@ -86,7 +88,7 @@ def remov(cpf):
     con = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="geleiadoce",
+    password=ps,
     database="mercadinho"
     )
     cursor = con.cursor()

@@ -29,4 +29,4 @@ uvicorn api:app --reload
 
 
 ## Autores
-Samuel Machado Emerenciano e Açucena Pereira
+Samuel Machado Emerenciano e Açucena da Luz Pereira

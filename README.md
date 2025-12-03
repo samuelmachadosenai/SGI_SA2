@@ -3,7 +3,8 @@ SENAI (24/11/2025)
 
 Sequência de comandos
 
-1: git clone https://github.com/samuelmachadosenai/SGI_SA2
+1:
+git clone https://github.com/samuelmachadosenai/SGI_SA2
 
 2:
 python -m venv venv

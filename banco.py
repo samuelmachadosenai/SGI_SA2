@@ -7,6 +7,20 @@ import mysql.connector
 #     database="mercadinho"
 # )
 
+def admin():
+    con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="geleiadoce",
+    database="mercadinho"
+    )
+    cursor = con.cursor()
+    comando = "INSERT INTO user (nome, senha) VALUES (%s, %s)"
+    cursor.execute(comando, ("admin", "123"))
+    con.commit()
+    cursor.close()
+    con.close()
+     
 
 
 # if con.is_connected():

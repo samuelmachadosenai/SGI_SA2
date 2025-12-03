@@ -3,16 +3,18 @@ SENAI (24/11/2025)
 
 Sequência de comandos
 
-1:
-python -m venv venv
+1: git clone https://github.com/samuelmachadosenai/SGI_SA2
 
 2:
-venv\Scripts\activate
+python -m venv venv
 
 3:
-pip install fastapi uvicorn mysql-connector-python
+venv\Scripts\activate
 
 4:
+pip install fastapi uvicorn mysql-connector-python
+
+5:
 uvicorn api:app --reload
 
 

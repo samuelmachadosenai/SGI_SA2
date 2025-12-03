@@ -1,7 +1,16 @@
 # SGI_SA2
 SENAI (24/11/2025)
 
-Sequência de comandos
+# SGI (parte de cadastro de funcionários)
+
+IDE utilizada: VS Code
+
+Linguagem: Python
+
+Framework: FastAPI
+
+
+# Sequência de comandos:
 
 1:
 git clone https://github.com/samuelmachadosenai/SGI_SA2
@@ -19,4 +28,5 @@ pip install fastapi uvicorn mysql-connector-python
 uvicorn api:app --reload
 
 
-
+# Autores
+Samuel Machado Emerenciano e Açucena Pereira

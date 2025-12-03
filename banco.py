@@ -7,7 +7,7 @@ import mysql.connector
 #     database="mercadinho"
 # )
 
-def admin():
+def login(a, s):
     con = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -15,11 +15,13 @@ def admin():
     database="mercadinho"
     )
     cursor = con.cursor()
-    comando = "INSERT INTO user (nome, senha) VALUES (%s, %s)"
-    cursor.execute(comando, ("admin", "123"))
-    con.commit()
+    comando = "SELECT nome, senha FROM users WHERE nome=%s AND senha=%s"
+    cursor.execute(comando, (a, s))
+    resultado = cursor.fetchone()
     cursor.close()
     con.close()
+
+    return resultado
      
 
 

@@ -3,11 +3,23 @@ from fastapi import FastAPI
 import banco as b
 from pydantic import BaseModel
 
+
+class Login(BaseModel):
+    user: str
+    senha: str
+
+
 class funcionario(BaseModel):
     nome: str
     cpf: str
     endereco: str
     telefone: str
+
+
+
+
+
+
 
 
 app = FastAPI()
@@ -22,6 +34,18 @@ def home():
 # users = []
 
 # json
+
+@app.post("/login")
+def entrar(login: Login):
+    resultado = b.login(login.user, login.senha)
+
+    if resultado is None:
+        return {"sucesso": False, "mensagem": "Usuário ou senha incorretos"}
+    else:
+        return {"sucesso": True, "mensagem": "Login bem sucedido!"}
+
+    
+
 
 
 @app.post("/funcionarios")
@@ -41,12 +65,12 @@ def read():
 def update(cpf: str, dados: funcionario):
 
     resultado = b.chang(dados.nome, dados.endereco, dados.telefone, cpf)
-    return resultado
+    return {"mensagem": "Dados atualizado"}
 
 @app.delete("/funcionarios/{cpf}")
 def delete(cpf: str):
     resultado = b.remov(cpf)
-    return resultado
+    return {"mensagem": "Dados salvos"}
 
     
 

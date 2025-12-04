@@ -48,9 +48,9 @@ def entrar(login: Login):
     resultado = b.login(login.user, login.senha)
 
     if resultado is None:
-        return {"sucesso": False, "mensagem": "Usuário ou senha incorretos"}
+        return {"Login": False, "mensagem": "Usuário ou senha incorretos"}
     else:
-        return {"sucesso": True, "mensagem": "Login bem sucedido!"}
+        return {"Login": True, "mensagem": "Login bem sucedido!"}
 
     
 

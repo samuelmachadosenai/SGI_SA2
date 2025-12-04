@@ -33,7 +33,20 @@ def login(a, s):
 # cursor = con.cursor()
 
 
- 
+def addprod(n, c, p):
+    con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password=ps,
+    database="mercadinho"
+    )
+    cursor = con.cursor()
+    comando = "INSERT INTO funcionario (Nome, CPF, Endereco, Telefone) VALUES (%s, %s, %s, %s)"
+    cursor.execute(comando, (n, c, p))
+    con.commit()
+    cursor.close()
+    con.close()
+    return "Salvo"
 
 def addfunc(n, c, e, t):
     con = mysql.connector.connect(

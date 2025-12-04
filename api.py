@@ -21,14 +21,16 @@ class produto(BaseModel):
     categoria: str
     preco: int
 
-@app.post("/produtos")
-def create(prod: produto):
-    b.addfunc(prod.nome, prod.categoria, prod.preco)
-    return "Produto adicionado"
+
 
 
 
 app = FastAPI()
+
+@app.post("/produtos")
+def create(prod: produto):
+    b.addfunc(prod.nome, prod.categoria, prod.preco)
+    return "Produto adicionado"
 
 
 @app.get("/")

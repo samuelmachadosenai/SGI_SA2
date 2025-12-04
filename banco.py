@@ -41,7 +41,7 @@ def addprod(n, c, p):
     database="mercadinho"
     )
     cursor = con.cursor()
-    comando = "INSERT INTO funcionario (Nome, CPF, Endereco, Telefone) VALUES (%s, %s, %s, %s)"
+    comando = "INSERT INTO produto (Nome, Categoria, Preco) VALUES (%s, %s, %s)"
     cursor.execute(comando, (n, c, p))
     con.commit()
     cursor.close()

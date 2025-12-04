@@ -16,9 +16,15 @@ class funcionario(BaseModel):
     telefone: str
 
 
+class produto(BaseModel):
+    nome: str
+    categoria: str
+    preco: int
 
-
-
+@app.post("/produtos")
+def create(prod: produto):
+    b.addfunc(prod.nome, prod.categoria, prod.preco)
+    return "Produto adicionado"
 
 
 

@@ -18,11 +18,20 @@ class funcionario(BaseModel):
 
 class produto(BaseModel):
     nome: str
-    categoria: str
+    departamento: str
     preco: int
 
-class caixa_compra(BaseModel):
+class item(BaseModel):
+    id
 
+#     class Item(BaseModel):
+#     id_item: int
+
+# @app.post("/caixacompra")
+# def compra(item: Item):
+#     items.append(item.id_item)
+#     return items
+    
 
 
 app = FastAPI()
@@ -35,13 +44,42 @@ def entrar(login: Login):
         return {"Login": False, "mensagem": "Usuário ou senha incorretos"}
     else:
         return {"Login": True, "mensagem": "Login bem sucedido!"}
-    
+
+
+
+items = []
+
 @app.post("/caixacompra")
-def compra()
+def compra(id_item: int):
+    items.append(id_item)
+    return items
+
+@app.get("/caixacompralista")
+def listagem():
+    lista = []
+    for i in items:
+        result = b.search(i)
+        if not result:
+            return "erro"
+        
+        nome = result[0][0]
+        preco = result[0][1]
+
+        d = {
+        'nome': nome,
+        'preco': preco}
+
+        lista.append(d)  
+     
+        # r.append(result.__dict__)
+    
+    return lista
+
+
 
 @app.post("/produtos")
 def create(prod: produto):
-    b.addprod(prod.nome, prod.categoria, prod.preco)
+    b.addprod(prod.nome, prod.departamento, prod.preco)
     return "Produto adicionado"
 
 

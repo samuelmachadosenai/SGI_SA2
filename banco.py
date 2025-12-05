@@ -23,8 +23,24 @@ def login(a, s):
     cursor.close()
     con.close()
 
+
     return resultado
-     
+
+def search(id):
+    con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password=ps,
+    database="mercadinho"
+    )
+    cursor = con.cursor()
+    comando = "SELECT Nome, Preco FROM produto WHERE idProduto=%s"
+    cursor.execute(comando, (id, ))
+    resultado = cursor.fetchall()
+    cursor.close()
+    con.close()
+
+    return resultado
 
 
 # if con.is_connected():

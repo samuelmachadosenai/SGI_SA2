@@ -21,15 +21,27 @@ class produto(BaseModel):
     categoria: str
     preco: int
 
-
+class caixa_compra(BaseModel):
 
 
 
 app = FastAPI()
 
+@app.post("/login")
+def entrar(login: Login):
+    resultado = b.login(login.user, login.senha)
+
+    if resultado is None:
+        return {"Login": False, "mensagem": "Usuário ou senha incorretos"}
+    else:
+        return {"Login": True, "mensagem": "Login bem sucedido!"}
+    
+@app.post("/caixacompra")
+def compra()
+
 @app.post("/produtos")
 def create(prod: produto):
-    b.addfunc(prod.nome, prod.categoria, prod.preco)
+    b.addprod(prod.nome, prod.categoria, prod.preco)
     return "Produto adicionado"
 
 
@@ -43,14 +55,7 @@ def home():
 
 # json
 
-@app.post("/login")
-def entrar(login: Login):
-    resultado = b.login(login.user, login.senha)
 
-    if resultado is None:
-        return {"Login": False, "mensagem": "Usuário ou senha incorretos"}
-    else:
-        return {"Login": True, "mensagem": "Login bem sucedido!"}
 
     
 

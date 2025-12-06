@@ -8,11 +8,12 @@ import mysql.connector
 # )
 
 ps = "geleiadoce"
+u = "root"
 
 def login(a, s):
     con = mysql.connector.connect(
     host="localhost",
-    user="root",
+    user=u,
     password=ps,
     database="mercadinho"
     )
@@ -26,10 +27,20 @@ def login(a, s):
 
     return resultado
 
+def venda():
+    con = mysql.connector.connect(
+    host="localhost",
+    user=u,
+    password=ps,
+    database="mercadinho"
+    )
+     
+     
+
 def search(id):
     con = mysql.connector.connect(
     host="localhost",
-    user="root",
+    user=u,
     password=ps,
     database="mercadinho"
     )
@@ -52,12 +63,12 @@ def search(id):
 def addprod(n, c, p):
     con = mysql.connector.connect(
     host="localhost",
-    user="root",
+    user=u,
     password=ps,
     database="mercadinho"
     )
     cursor = con.cursor()
-    comando = "INSERT INTO produto (Nome, Categoria, Preco) VALUES (%s, %s, %s)"
+    comando = "INSERT INTO produto (Nome, idDepartamento, Preco) VALUES (%s, %s, %s)"
     cursor.execute(comando, (n, c, p))
     con.commit()
     cursor.close()
@@ -67,7 +78,7 @@ def addprod(n, c, p):
 def addfunc(n, c, e, t):
     con = mysql.connector.connect(
     host="localhost",
-    user="root",
+    user=u,
     password=ps,
     database="mercadinho"
     )
@@ -82,7 +93,7 @@ def addfunc(n, c, e, t):
 def seefunc():
     con = mysql.connector.connect(
         host="localhost",
-        user="root",
+        user=u,
         password=ps,
         database="mercadinho"
     )
@@ -95,8 +106,8 @@ def seefunc():
 
 def chang(n, e, t, c):
         con = mysql.connector.connect(
+        user=u,
         host="localhost",
-        user="root",
         password=ps,
         database="mercadinho"
         )
@@ -116,7 +127,7 @@ def chang(n, e, t, c):
 def remov(cpf):
     con = mysql.connector.connect(
     host="localhost",
-    user="root",
+    user=u,
     password=ps,
     database="mercadinho"
     )
@@ -128,3 +139,10 @@ def remov(cpf):
     con.close()
 
     return "Mudanças salvas"
+
+#  File "C:\Users\samuel\OneDrive\Documentos\GitHub\SGI_SA2\api.py", line 61, in listagem
+#     result = b.search(i)
+#              ^^^^^^^^^^^
+#   File "C:\Users\samuel\OneDrive\Documentos\GitHub\SGI_SA2\banco.py", line 31, in search
+#     con = mysql.connector.connect(
+#           ^^^^^^^^^^^^^^^^^^^^^^^^

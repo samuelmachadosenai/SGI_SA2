@@ -21,16 +21,10 @@ class produto(BaseModel):
     departamento: str
     preco: int
 
-class item(BaseModel):
-    id
+class Item(BaseModel):
+    id_item: int
 
-#     class Item(BaseModel):
-#     id_item: int
 
-# @app.post("/caixacompra")
-# def compra(item: Item):
-#     items.append(item.id_item)
-#     return items
     
 
 
@@ -50,13 +44,18 @@ def entrar(login: Login):
 items = []
 
 @app.post("/caixacompra")
-def compra(id_item: int):
-    items.append(id_item)
+def compra(item: Item):
+    items.append(item.id_item)
     return items
+
+
+lista = []
 
 @app.get("/caixacompralista")
 def listagem():
+    global lista
     lista = []
+   
     for i in items:
         result = b.search(i)
         if not result:
@@ -70,10 +69,21 @@ def listagem():
         'preco': preco}
 
         lista.append(d)  
+
+
      
         # r.append(result.__dict__)
     
     return lista
+
+@app.post("/confirmarcompra")
+def comprar():
+
+    preco = 0
+    for i in lista:
+        total += i['preco']
+    
+
 
 
 
@@ -116,7 +126,7 @@ def read():
 def update(cpf: str, dados: funcionario):
 
     resultado = b.chang(dados.nome, dados.endereco, dados.telefone, cpf)
-    return {"mensagem": "Dados atualizado"}
+    return {"mensagem": "Dados atualizados"}
 
 @app.delete("/funcionarios/{cpf}")
 def delete(cpf: str):

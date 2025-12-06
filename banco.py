@@ -27,13 +27,21 @@ def login(a, s):
 
     return resultado
 
-def venda():
-    con = mysql.connector.connect(
-    host="localhost",
-    user=u,
-    password=ps,
-    database="mercadinho"
-    )
+# def venda():
+#     con = mysql.connector.connect(
+#     host="localhost",
+#     user=u,
+#     password=ps,
+#     database="mercadinho"
+#     )
+
+#     cursor = con.cursor()
+#     comando = "INSERT INTO vendas (Nome, idDepartamento, Preco) VALUES (%s, %s, %s)"
+#     cursor.execute(comando, (id, ))
+#     resultado = cursor.fetchall()
+#     cursor.close()
+#     con.close()
+
      
      
 

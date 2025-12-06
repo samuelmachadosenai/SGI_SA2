@@ -79,10 +79,12 @@ def listagem():
 @app.post("/confirmarcompra")
 def comprar():
 
-    preco = 0
+    total = 0
     for i in lista:
         total += i['preco']
+
     
+    return {'total': total}
 
 
 

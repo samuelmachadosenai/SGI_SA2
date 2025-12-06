@@ -58,7 +58,7 @@ def listagem():
    
     for i in items:
         result = b.search(i)
-        if not result:
+        if result == None:
             return "erro"
         
         nome = result[0][0]
@@ -81,10 +81,11 @@ def comprar():
 
     total = 0
     for i in lista:
-        total += i['preco']
+        preco = int(i['preco'])
+        total += preco
 
     
-    return {'total': total}
+    return {'total': total, 'itens': lista}
 
 
 

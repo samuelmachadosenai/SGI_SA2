@@ -106,3 +106,34 @@ def formatar(cpf):
   print(hifen)
 
   return hifen
+
+
+def nome(n):
+    if n.isalpha == False:
+        return False
+
+
+    if len(n) > 45:
+        return False
+    
+
+    n = n.lower()
+
+    n = n.split()
+    if len(n) < 2:
+        return False
+    
+    listatop = []
+
+    for i in n:
+        I = i.capitalize()
+        
+        listatop.append(I)
+
+    n = " ".join(listatop)
+        
+
+
+
+    return n
+   

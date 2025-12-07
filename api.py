@@ -120,9 +120,14 @@ def create(colab: funcionario):
     end = colab.endereco
     tel = colab.telefone
 
+    nome = r.nome(nome)
+
+    if nome == False:
+        return "Nome inválido"
+
     if r.checkcpf(cpf) == False:
         return "CPF inválido."
-
+    
     b.addfunc(nome, cpf, end, tel)
     return "Funcionário adicionado"
 

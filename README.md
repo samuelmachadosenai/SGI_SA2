@@ -1,7 +1,7 @@
 # Situação de Aprendizagem 2
 SENAI (24/11/2025)
 
-## SGI (parte de cadastro de funcionários)
+## SGI
 
 IDE utilizada: VS Code
 

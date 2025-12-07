@@ -124,7 +124,7 @@ def create(colab: funcionario):
 
     if nome == False:
         return "Nome inválido"
-
+    
     if r.checkcpf(cpf) == False:
         return "CPF inválido."
     

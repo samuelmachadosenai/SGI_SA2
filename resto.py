@@ -1,9 +1,5 @@
 def checkcpf(cpf_str):
     while True:
-        cpf_str = cpf_str.strip()
-        cpf_str = cpf_str.replace(".", "")
-        cpf_str = cpf_str.replace("-", "")
-
         quant = len(cpf_str)
         #123234345
         # lista = []
@@ -136,4 +132,24 @@ def nome(n):
 
 
     return n
-   
+
+
+
+# def geradorlegal():
+#     import random
+#     import time
+#     while True:
+#         a = random.randint(00000000000, 99999999999)
+#         a = str(a)
+
+#         if checkcpf(a) == False:
+#             continue
+#         else:
+#             a = formatar(a)
+#             print(a)
+#             time.sleep(2)
+
+
+
+
+# geradorlegal()

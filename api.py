@@ -2,6 +2,7 @@ from fastapi import FastAPI
 # import main
 import banco as b
 from pydantic import BaseModel
+import resto as r
 
 
 class Login(BaseModel):
@@ -114,7 +115,15 @@ def home():
 
 @app.post("/funcionarios")
 def create(colab: funcionario):
-    b.addfunc(colab.nome, colab.cpf, colab.endereco, colab.telefone)
+    nome = colab.nome
+    cpf = colab.cpf 
+    end = colab.endereco
+    tel = colab.telefone
+
+    if r.checkcpf(cpf) == False:
+        return "CPF inválido."
+
+    b.addfunc(nome, cpf, end, tel)
     return "Funcionário adicionado"
 
 
@@ -128,12 +137,12 @@ def read():
 @app.put("/funcionarios/{cpf}")
 def update(cpf: str, dados: funcionario):
 
-    resultado = b.chang(dados.nome, dados.endereco, dados.telefone, cpf)
+    b.chang(dados.nome, dados.endereco, dados.telefone, cpf)
     return {"mensagem": "Dados atualizados"}
 
 @app.delete("/funcionarios/{cpf}")
 def delete(cpf: str):
-    resultado = b.remov(cpf)
+    b.remov(cpf)
     return {"mensagem": "Dados salvos"}
 
     

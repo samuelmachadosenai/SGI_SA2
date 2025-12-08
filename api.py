@@ -22,6 +22,7 @@ class produto(BaseModel):
     nome: str
     categoria: str
     preco: int
+    quantidade: int
 
 class Item(BaseModel):
     id_item: int
@@ -92,7 +93,7 @@ def comprar():
 
 @app.post("/produtos")
 def create(prod: produto):
-    b.addprod(prod.nome, prod.categoria, prod.preco)
+    b.addprod(prod.nome, prod.categoria, prod.preco, prod.quantidade)
     return "Produto adicionado"
 
 
@@ -122,11 +123,13 @@ def create(colab: funcionario):
 
     nome = r.nome(nome)
 
+
     if nome == False:
         return "Nome inválido"
-    
     if r.checkcpf(cpf) == False:
         return "CPF inválido."
+    if len(tel) > 10:
+        return "Telefone inválido."
     
     b.addfunc(nome, cpf, cargo, end, tel)
     return "Funcionário adicionado"

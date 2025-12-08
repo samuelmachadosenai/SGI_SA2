@@ -7,14 +7,14 @@ import mysql.connector
 #     database="mercadinho"
 # )
 
-ps = "geleiadoce"
+# ps = "geleiadoce"
 u = "root"
 
 def login(a, s):
     con = mysql.connector.connect(
     host="localhost",
     user=u,
-    password=ps,
+    # password=ps,
     database="mercadinho"
     )
     cursor = con.cursor()
@@ -49,7 +49,7 @@ def search(id):
     con = mysql.connector.connect(
     host="localhost",
     user=u,
-    password=ps,
+    # password=ps,
     database="mercadinho"
     )
     cursor = con.cursor()
@@ -68,16 +68,16 @@ def search(id):
 # cursor = con.cursor()
 
 
-def addprod(n, c, p):
+def addprod(n, c, p, qt):
     con = mysql.connector.connect(
     host="localhost",
     user=u,
-    password=ps,
+    # password=ps,
     database="mercadinho"
     )
     cursor = con.cursor()
-    comando = "INSERT INTO produto (Nome, Categoria, Preco) VALUES (%s, %s, %s)"
-    cursor.execute(comando, (n, c, p))
+    comando = "INSERT INTO produto (Nome, Categoria, Preco, Quantidade) VALUES (%s, %s, %s, %s)"
+    cursor.execute(comando, (n, c, p, qt))
     con.commit()
     cursor.close()
     con.close()
@@ -87,7 +87,7 @@ def addfunc(n, c, ca, e, t):
     con = mysql.connector.connect(
     host="localhost",
     user=u,
-    password=ps,
+    # password=ps,
     database="mercadinho"
     )
     cursor = con.cursor()
@@ -102,7 +102,7 @@ def seefunc():
     con = mysql.connector.connect(
         host="localhost",
         user=u,
-        password=ps,
+        # password=ps,
         database="mercadinho"
     )
     cursor = con.cursor(dictionary=True)
@@ -116,7 +116,7 @@ def chang(n, ca, e, t, c):
         con = mysql.connector.connect(
         user=u,
         host="localhost",
-        password=ps,
+        # password=ps,
         database="mercadinho"
         )
         cursor = con.cursor()
@@ -136,7 +136,7 @@ def remov(cpf):
     con = mysql.connector.connect(
     host="localhost",
     user=u,
-    password=ps,
+    # password=ps,
     database="mercadinho"
     )
     cursor = con.cursor()

@@ -13,13 +13,14 @@ class Login(BaseModel):
 class funcionario(BaseModel):
     nome: str
     cpf: str
+    cargo: str
     endereco: str
     telefone: str
 
 
 class produto(BaseModel):
     nome: str
-    departamento: str
+    categoria: str
     preco: int
 
 class Item(BaseModel):
@@ -71,7 +72,6 @@ def listagem():
 
         lista.append(d)  
 
-
      
         # r.append(result.__dict__)
     
@@ -79,12 +79,11 @@ def listagem():
 
 @app.post("/confirmarcompra")
 def comprar():
-
+    
     total = 0
     for i in lista:
         preco = int(i['preco'])
         total += preco
-
     
     return {'total': total, 'itens': lista}
 
@@ -93,7 +92,7 @@ def comprar():
 
 @app.post("/produtos")
 def create(prod: produto):
-    b.addprod(prod.nome, prod.departamento, prod.preco)
+    b.addprod(prod.nome, prod.categoria, prod.preco)
     return "Produto adicionado"
 
 
@@ -117,6 +116,7 @@ def home():
 def create(colab: funcionario):
     nome = colab.nome
     cpf = colab.cpf 
+    cargo = colab.cargo
     end = colab.endereco
     tel = colab.telefone
 
@@ -128,7 +128,7 @@ def create(colab: funcionario):
     if r.checkcpf(cpf) == False:
         return "CPF inválido."
     
-    b.addfunc(nome, cpf, end, tel)
+    b.addfunc(nome, cpf, cargo, end, tel)
     return "Funcionário adicionado"
 
 
@@ -142,7 +142,7 @@ def read():
 @app.put("/funcionarios/{cpf}")
 def update(cpf: str, dados: funcionario):
 
-    b.chang(dados.nome, dados.endereco, dados.telefone, cpf)
+    b.chang(dados.nome, dados.cargo, dados.endereco, dados.telefone, cpf)
     return {"mensagem": "Dados atualizados"}
 
 @app.delete("/funcionarios/{cpf}")

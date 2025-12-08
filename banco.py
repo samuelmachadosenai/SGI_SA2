@@ -76,14 +76,14 @@ def addprod(n, c, p):
     database="mercadinho"
     )
     cursor = con.cursor()
-    comando = "INSERT INTO produto (Nome, idDepartamento, Preco) VALUES (%s, %s, %s)"
+    comando = "INSERT INTO produto (Nome, Categoria, Preco) VALUES (%s, %s, %s)"
     cursor.execute(comando, (n, c, p))
     con.commit()
     cursor.close()
     con.close()
     return "Salvo"
 
-def addfunc(n, c, e, t):
+def addfunc(n, c, ca, e, t):
     con = mysql.connector.connect(
     host="localhost",
     user=u,
@@ -91,8 +91,8 @@ def addfunc(n, c, e, t):
     database="mercadinho"
     )
     cursor = con.cursor()
-    comando = "INSERT INTO funcionario (Nome, CPF, Endereco, Telefone) VALUES (%s, %s, %s, %s)"
-    cursor.execute(comando, (n, c, e, t))
+    comando = "INSERT INTO funcionario (Nome, CPF, Cargo, Endereco, Telefone) VALUES (%s, %s, %s, %s, %s)"
+    cursor.execute(comando, (n, c, ca, e, t))
     con.commit()
     cursor.close()
     con.close()
@@ -106,13 +106,13 @@ def seefunc():
         database="mercadinho"
     )
     cursor = con.cursor(dictionary=True)
-    cursor.execute("SELECT Nome, CPF, Endereco, Telefone FROM funcionario")
+    cursor.execute("SELECT Nome, CPF, Cargo, Endereco, Telefone FROM funcionario")
     resultados = cursor.fetchall()
     cursor.close()
     con.close()
     return resultados
 
-def chang(n, e, t, c):
+def chang(n, ca, e, t, c):
         con = mysql.connector.connect(
         user=u,
         host="localhost",
@@ -122,10 +122,10 @@ def chang(n, e, t, c):
         cursor = con.cursor()
         comando = """
         UPDATE funcionario
-        SET Nome=%s, Endereco=%s, Telefone=%s
+        SET Nome=%s, Cargo=%s, Endereco=%s, Telefone=%s
         WHERE CPF=%s
         """
-        cursor.execute(comando, (n, e, t, c))
+        cursor.execute(comando, (n, ca, e, t, c))
         con.commit()
         cursor.close()
         con.close()

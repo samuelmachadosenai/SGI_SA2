@@ -10,22 +10,22 @@ import mysql.connector
 # ps = "geleiadoce"
 u = "root"
 
-def login(a, s):
-    con = mysql.connector.connect(
-    host="localhost",
-    user=u,
-    # password=ps,
-    database="mercadinho"
-    )
-    cursor = con.cursor()
-    comando = "SELECT nome, senha FROM users WHERE nome=%s AND senha=%s"
-    cursor.execute(comando, (a, s))
-    resultado = cursor.fetchone()
-    cursor.close()
-    con.close()
+# def login(a, s):
+#     con = mysql.connector.connect(
+#     host="localhost",
+#     user=u,
+#     # password=ps,
+#     database="mercadinho"
+#     )
+#     cursor = con.cursor()
+#     comando = "SELECT nome, senha FROM users WHERE nome=%s AND senha=%s"
+#     cursor.execute(comando, (a, s))
+#     resultado = cursor.fetchone()
+#     cursor.close()
+#     con.close()
 
 
-    return resultado
+#     return resultado
 
 # def venda():
 #     con = mysql.connector.connect(

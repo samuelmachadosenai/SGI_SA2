@@ -5,9 +5,9 @@ from pydantic import BaseModel
 import resto as r
 
 
-class Login(BaseModel):
-    user: str
-    senha: str
+# class Login(BaseModel):
+#     user: str
+#     senha: str
 
 
 class funcionario(BaseModel):

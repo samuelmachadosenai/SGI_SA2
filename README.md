@@ -1,7 +1,7 @@
 # Situação de Aprendizagem 2
 SENAI (24/11/2025)
 
-## SGI
+## SGI (CRUD de funcionários)
 
 IDE utilizada: VS Code
 
@@ -27,6 +27,7 @@ pip install fastapi uvicorn mysql-connector-python
 5:
 uvicorn api:app --reload
 
+OBS: Altere as informações de conexão em banco.py, se for necessário senha
 
 ## Autores
 Samuel Machado Emerenciano e Açucena da Luz Pereira

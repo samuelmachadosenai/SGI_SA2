@@ -112,6 +112,21 @@ def seefunc():
     con.close()
     return resultados
 
+def seeprod():
+    con = mysql.connector.connect(
+        host="localhost",
+        user=u,
+        # password=ps,
+        database="mercadinho"
+    )
+    cursor = con.cursor(dictionary=True)
+    cursor.execute("SELECT Nome, Categoria, Preco, Quantidade FROM produto")
+    resultados = cursor.fetchall()
+    cursor.close()
+    con.close()
+    return resultados
+     
+
 def chang(n, ca, e, t, c):
         con = mysql.connector.connect(
         user=u,

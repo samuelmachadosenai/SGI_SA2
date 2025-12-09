@@ -27,20 +27,22 @@ class produto(BaseModel):
 class Item(BaseModel):
     id_item: int
 
-
+ativo = None
     
-
 
 app = FastAPI()
 
 @app.post("/login")
 def entrar(login: Login):
+    global ativo
     resultado = b.login(login.user, login.senha)
 
     if resultado is None:
         return {"Login": False, "mensagem": "Usuário ou senha incorretos"}
     else:
+        ativo = True
         return {"Login": True, "mensagem": "Login bem sucedido!"}
+
 
 
 
@@ -96,16 +98,19 @@ def create(prod: produto):
     b.addprod(prod.nome, prod.categoria, prod.preco, prod.quantidade)
     return "Produto adicionado"
 
+@app.get("/produtos")
+def read():
+    return b.seeprod()
 
-@app.get("/")
-def home():
-    return "hello world"
+# @app.get("/")
+# def home():
+#     return "hello world"
 
-# dados = main.us()
+# # dados = main.us()
 
-# users = []
+# # users = []
 
-# json
+# # json
 
 
 
@@ -123,7 +128,8 @@ def create(colab: funcionario):
 
     nome = r.nome(nome)
 
-
+    if ativo != True:
+        return "Sem permissão."
     if nome == False:
         return "Nome inválido"
     if r.checkcpf(cpf) == False:
@@ -139,17 +145,22 @@ def create(colab: funcionario):
 
 @app.get("/funcionarios")
 def read():
+    if ativo != True:
+        return "Sem permissão."
     return b.seefunc()
     
 
 @app.put("/funcionarios/{cpf}")
 def update(cpf: str, dados: funcionario):
-
+    if ativo != True:
+        return "Sem permissão."
     b.chang(dados.nome, dados.cargo, dados.endereco, dados.telefone, cpf)
     return {"mensagem": "Dados atualizados"}
 
 @app.delete("/funcionarios/{cpf}")
 def delete(cpf: str):
+    if ativo != True:
+        return "Sem permissão."
     b.remov(cpf)
     return {"mensagem": "Dados salvos"}
 

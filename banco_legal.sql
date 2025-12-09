@@ -2,13 +2,6 @@ DROP DATABASE IF EXISTS mercadinho;
 CREATE DATABASE mercadinho;
 USE mercadinho;
 
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(50) NOT NULL UNIQUE,
-    senha VARCHAR(255) NOT NULL
-);
-
-INSERT INTO users (nome, senha) VALUES ("admin", "123");
 
 CREATE TABLE produto (
     idProduto INT AUTO_INCREMENT PRIMARY KEY,

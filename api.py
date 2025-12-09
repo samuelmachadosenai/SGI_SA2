@@ -102,9 +102,9 @@ def create(prod: produto):
 def read():
     return b.seeprod()
 
-# @app.get("/")
-# def home():
-#     return "hello world"
+@app.get("/")
+def home():
+    return "hello world"
 
 # # dados = main.us()
 

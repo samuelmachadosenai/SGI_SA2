@@ -47,3 +47,9 @@ CREATE TABLE venda (
     PrecoTotal DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (idProduto) REFERENCES produto(idProduto)
 );
+
+ALTER TABLE venda
+ADD COLUMN idFuncionario INT NOT NULL,
+ADD CONSTRAINT fk_venda_funcionario
+    FOREIGN KEY (idFuncionario)
+    REFERENCES funcionario(idFuncionario);
